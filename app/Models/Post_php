@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Models;
+
+
+
+class Post
+{
+    private static $blog_posts = [
+        [
+            "title" => "Judul Post Pertama",
+            "slug" => "judul-post-pertama",
+            "author" => "Yoga Pratama Salim",
+            "body" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore repellendus maxime debitis, iste laboriosam repudiandae, odit facilis praesentium id nostrum quis expedita maiores doloremque dignissimos. Quos quia tenetur assumenda repudiandae maiores. Consequatur, reiciendis repellat? Repudiandae, in sed magnam adipisci amet dignissimos eius necessitatibus quis repellat assumenda reiciendis! Quaerat et earum repellat expedita porro corrupti tempora aliquid aspernatur libero fugit. Eveniet quos, totam enim sunt ipsum illum! Impedit nulla nisi ut quibusdam, quo vel possimus eveniet debitis laboriosam, excepturi cupiditate velit."
+        ],
+        [
+            "title" => "Judul Post Kedua",
+            "slug" => "judul-post-kedua",
+            "author" => "Aditya Pratama Gusti Wahono",
+            "body" => "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis dolorem quidem quis? Porro exercitationem blanditiis, sequi delectus, dolorem repudiandae eveniet inventore temporibus placeat deleniti officiis obcaecati, perspiciatis at quis magnam ea. Totam fuga tempore fugit ad doloremque dolore rerum et reprehenderit voluptate quos cum, culpa veniam pariatur aspernatur eius at voluptates suscipit ut. Architecto ipsa consequuntur reiciendis quod quos aspernatur nobis nisi est sint modi neque vel pariatur recusandae minima eaque quas molestiae voluptatum aut accusamus maiores deserunt magni, hic voluptate. Suscipit dolorem quos odio, in libero ipsum enim tempora incidunt at pariatur facere ipsam earum quas repellendus eius atque!"
+        ],
+    ];
+
+
+    public static function all()
+    {
+        return collect(self::$blog_posts);
+    }
+
+    public static function find($slug)
+    {
+        $posts = static::all();
+        // $post = [];
+        // foreach ($posts as $p) {
+        //     if ($p["slug"] === $slug) {
+        //         $post = $p;
+        //     }
+        // }
+        return $posts->firstwhere('slug', $slug);
+    }
+}
